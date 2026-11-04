@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Project ideas and setup questions
+    url: https://github.com/muriente/hotplug.dev/discussions
+    about: Discuss the project direction and intended device setups.
+  - name: Private security report
+    url: https://github.com/muriente/hotplug.dev/security/advisories/new
+    about: Report sensitive security information privately.

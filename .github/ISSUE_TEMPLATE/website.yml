@@ -1,0 +1,21 @@
+name: Website problem
+description: Report broken links, accessibility problems, or inaccurate content.
+title: "[Website]: "
+labels: [website]
+body:
+  - type: markdown
+    attributes:
+      value: "For sensitive security details use private security reporting. Do not post credentials or personal data."
+  - type: input
+    id: page
+    attributes:
+      label: Page URL
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened, and what should happen?
+      description: Include browser/device and reproduction steps where relevant. Redact private information.
+    validations:
+      required: true
