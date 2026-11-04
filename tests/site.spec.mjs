@@ -2,7 +2,8 @@ import {test,expect} from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 for(const path of ['/','/guide/','/privacy/','/404.html'])test(`${path} accessibility and responsive layout`,async({page})=>{
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
- const response=await page.goto(path);expect(response.status()).toBe(path==='/404.html'&&process.env.SITE_URL?404:200);
+ const live404=path==='/404.html'&&process.env.SITE_URL;
+ const response=await page.goto(live404?'/not-found-acceptance/':path);expect(response.status()).toBe(live404?404:200);
  await expect(page.locator('h1')).toBeVisible();
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
  const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']).analyze();expect(audit.violations).toEqual([]);expect(errors).toEqual([]);
