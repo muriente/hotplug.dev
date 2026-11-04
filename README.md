@@ -32,7 +32,7 @@ No configurable hosted build/test/lint/audit jobs, self-hosted runner or new ser
 
 For website content, revert the faulty merge through a PR, pass checks and merge. Run the local publisher and confirm the resulting managed Pages run and `/version.json`; do not equate source revert with live recovery. Use a verified known-good content revert; never force-push or delete history.
 
-For DNS, restore the five changed records from `docs/ops/dns-before.json` through Cloudflare's DNS API, preserving unrelated later records. Return each original content/proxy/TTL value by record ID. Do not alter DNSSEC/DS, nameservers, mail-deny TXT, `_domainconnect`, or future domain verification TXT. The prior origin is parking; a DNS rollback restores parking, not an older Hotplug website. Keep Full(strict); never use Flexible as a certificate workaround. See [launch evidence](docs/ops/LAUNCH.md) and [decisions](docs/research/DECISIONS.md).
+For DNS, restore the five changed records from `docs/ops/dns-before.json` through Cloudflare's DNS API, preserving unrelated later records. Return each original content/proxy/TTL value by record ID. Do not alter DNSSEC/DS, nameservers, mail-deny TXT, `_domainconnect`, or future domain verification TXT. The prior origin is parking; a DNS rollback restores parking, not an older Hotplug website. Keep Full(strict); never use Flexible as a certificate workaround. See [current launch acceptance](https://github.com/muriente/hotplug.dev/issues/8), [launch evidence](docs/ops/LAUNCH.md) and [decisions](docs/research/DECISIONS.md).
 
 ## Operations
 
