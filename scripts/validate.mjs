@@ -5,6 +5,7 @@ import { HtmlValidate } from 'html-validate';
 const root=resolve('site');
 const walk=async p=>(await Promise.all((await readdir(p)).map(async n=>(await stat(join(p,n))).isDirectory()?walk(join(p,n)):join(p,n)))).flat();
 const rejectSymlinks=async p=>{for(const n of await readdir(p)){const f=join(p,n),s=await lstat(f);assert(!s.isSymbolicLink(),'Symlinks must never enter public output: '+f);if(s.isDirectory())await rejectSymlinks(f);}};
+assert(!(await lstat(root)).isSymbolicLink(),'The public site root must not be a symlink');
 await rejectSymlinks(root);
 const files=await walk(root);
 const validator=new HtmlValidate({extends:['html-validate:recommended'],rules:{'void-style':'off','long-title':'off','svg-focusable':'off','prefer-native-element':'off','no-inline-style':'error','no-redundant-role':'off'}});
