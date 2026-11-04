@@ -9,8 +9,8 @@ def run(*a,cwd=ROOT):return subprocess.check_output(a,cwd=cwd,text=True).strip()
 if run('git','branch','--show-current')!='main' or run('git','status','--porcelain'):raise SystemExit('Publish from a clean main checkout.')
 sha=run('git','rev-parse','HEAD')
 if run('git','ls-remote',REPO,'refs/heads/main').split()[0]!=sha:raise SystemExit('Local main differs from remote main.')
-checks=json.loads(run('gh','api','repos/muriente/hotplug.dev/commits/'+sha+'/status'))
-check=next((s for s in checks['statuses'] if s['context']=='MINI / site checks'),None)
+checks=json.loads(run('gh','api','repos/muriente/hotplug.dev/statuses/'+sha))
+check=next((s for s in checks if s['context']=='MINI / site checks'),None)
 if not check or check['state']!='success' or check['creator']['login']!='muriente':raise SystemExit('Run python3 scripts/check-local.py for this exact main SHA first.')
 # Temp checkout is isolated. History and prior deployment commits remain intact.
 with tempfile.TemporaryDirectory(prefix='hotplug-publish-') as temp:

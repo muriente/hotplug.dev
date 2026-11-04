@@ -7,7 +7,7 @@
 - Authority: create a separate public website repo, publish and deploy; reversible .dev DNS/config changes under KDEV-150 standing authorization (Juan, 2026-10-22). No spending, private product code publication, credentials, unrelated repos or secondary-domain cutovers.
 - Deliverable: site, workflows, public participation routes, verified deployment and reproducible rollback.
 - Closure: exact source deployed by successful Pages run; HTTPS apex serves new content; www canonical preserves path/query; desktop/mobile/keyboard and automated accessibility/link checks pass; DNSSEC/TLS intact; remote configuration read back.
-- State: active. Next: implement, verify and deploy. Codex owns the remainder; coordinator owns compact continuity.
+- Current lifecycle state and final acceptance: [launch issue #8](https://github.com/muriente/hotplug.dev/issues/8). This document retains the detailed historical evidence; the issue records the latest owner, next action and closure evidence.
 - Cadence: meaningful milestones immediately; maximum three minutes during active work.
 
 ## Ownership and preservation
@@ -36,3 +36,13 @@ Ruleset 26542972 active on default branch, no bypass: PR with zero required appr
 ## Superseding compute constraint
 
 Juan's replacement AGENTS.md on 2026-11-04 adds local MINI compute by default (KDEV-162). Adapted the same launch mission: hosted quality and scheduled health workflows disabled/archived, local exact-SHA checks and maintainer commit status replace Site checks, local publisher produces gh-pages, native GitHub Pages service remains the requested host. No new runner, credentials, service or paid compute. Earlier hosted quality runs were an implementation choice, not an explicit user request. Run41860694240 was canceled after the constraint arrived. LOCAL-COMPUTE.md was absent from both the named local checkout and remote main at inspection; latest provided AGENTS instruction governs. See LOCAL-PUBLICATION.md for the working path.
+
+## Live acceptance and local-route verification
+
+GitHub issued an approved certificate for hotplug.dev/www.hotplug.dev, expiry2027-02-02; HTTPS enforcement enabled. Restored Cloudflare proxy on five website records with Full(strict). Public apex200 and www308 preserving /guide/?check=canonical verified; origin HTTPS200 with matching content. DNSSEC remains active and DS digest unchanged; mail-deny TXT and _domainconnect preserved. Permanent GitHub ownership TXT retained. Final DNS/SSL readback: dns-after.json. No .app/.org changes.
+
+Actual live site passed all12 desktop/mobile/keyboard/axe checks, including 320px200%text and real missing-path404. Live mobile Lighthouse lab scores100 performance/accessibility/best-practices/SEO, LCP0.9s CLS0 TBT0; these are synthetic measurements, not field data or exhaustive accessibility/user acceptance. Desktop/mobile screenshots retained locally under /Users/muriente/Developer/Projects/Hotplug/artifacts/live-desktop.png and live-mobile.png.
+
+PR7 merged2501b6e after local exact-SHA status and independent review. Local merged-main checks passed. First publisher invocation stopped safely before remote push because the combined-status API lacks creator; corrected to the individual status-list endpoint, whose actual readback includes creator muriente. Native publication remains pending until launch issue8 records accepted source, publication commit, managed Pages run and final live verification.
+
+Contrarian checks: initial workflow success did not count as TLS acceptance; direct origin TLS initially failed, so no Flexible downgrade. First local publisher failure did not count as publication; no branch push occurred. Immutable snapshot fixtures proved ignored/untracked/later-working edits cannot enter public output and committed symlinks are rejected. Independent review confirmed fixes; local gate owns its preview server. Rollback preserves Git history and prior config.

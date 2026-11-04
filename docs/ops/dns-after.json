@@ -1,0 +1,202 @@
+{
+  "dns": {
+    "result": [
+      {
+        "id": "77e67f0fc500f52ac1042abde258aa8c",
+        "name": "hotplug.dev",
+        "type": "A",
+        "content": "185.199.108.153",
+        "proxiable": true,
+        "proxied": true,
+        "ttl": 1,
+        "settings": {},
+        "meta": {},
+        "comment": null,
+        "tags": [],
+        "created_on": "2026-11-04T11:22:39.559435Z",
+        "modified_on": "2026-11-04T15:40:19.946541Z"
+      },
+      {
+        "id": "2f0127fda8426dbb9dfc0209108ad19e",
+        "name": "hotplug.dev",
+        "type": "A",
+        "content": "185.199.109.153",
+        "proxiable": true,
+        "proxied": true,
+        "ttl": 1,
+        "settings": {},
+        "meta": {},
+        "comment": null,
+        "tags": [],
+        "created_on": "2026-11-04T11:22:39.548249Z",
+        "modified_on": "2026-11-04T15:40:19.741087Z"
+      },
+      {
+        "id": "69f815f1888c0ed6346ded1768733352",
+        "name": "hotplug.dev",
+        "type": "A",
+        "content": "185.199.110.153",
+        "proxiable": true,
+        "proxied": true,
+        "ttl": 1,
+        "settings": {},
+        "meta": {},
+        "comment": null,
+        "tags": [],
+        "created_on": "2026-11-04T11:22:39.536398Z",
+        "modified_on": "2026-11-04T15:40:19.426569Z"
+      },
+      {
+        "id": "01bf719ecb71b2b7b6f2d8d2fb462c24",
+        "name": "hotplug.dev",
+        "type": "A",
+        "content": "185.199.111.153",
+        "proxiable": true,
+        "proxied": true,
+        "ttl": 1,
+        "settings": {},
+        "meta": {},
+        "comment": null,
+        "tags": [],
+        "created_on": "2026-11-04T11:22:39.524553Z",
+        "modified_on": "2026-11-04T15:40:18.872505Z"
+      },
+      {
+        "id": "94889b4ac0eb42f7f29bf3942754110b",
+        "name": "_domainconnect.hotplug.dev",
+        "type": "CNAME",
+        "content": "_domainconnect.domains.squarespace.com",
+        "proxiable": true,
+        "proxied": false,
+        "ttl": 3600,
+        "settings": {
+          "flatten_cname": false
+        },
+        "meta": {},
+        "comment": null,
+        "tags": [],
+        "created_on": "2026-11-04T11:22:39.492672Z",
+        "modified_on": "2026-11-04T14:07:03.83496Z"
+      },
+      {
+        "id": "d97ce7fcce7f23f7291aa9cc9ee74dfc",
+        "name": "www.hotplug.dev",
+        "type": "CNAME",
+        "content": "muriente.github.io",
+        "proxiable": true,
+        "proxied": true,
+        "ttl": 1,
+        "settings": {
+          "flatten_cname": false
+        },
+        "meta": {},
+        "comment": null,
+        "tags": [],
+        "created_on": "2026-11-04T11:22:39.477676Z",
+        "modified_on": "2026-11-04T15:40:20.248655Z"
+      },
+      {
+        "id": "aeb7e15859b51e37a79d6790ce3990c4",
+        "name": "_dmarc.hotplug.dev",
+        "type": "TXT",
+        "content": "\"v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s\"",
+        "proxiable": false,
+        "proxied": false,
+        "ttl": 1,
+        "settings": {},
+        "meta": {},
+        "comment": null,
+        "tags": [],
+        "created_on": "2026-11-04T11:22:39.506707Z",
+        "modified_on": "2026-11-04T11:22:39.506707Z"
+      },
+      {
+        "id": "cd022a9bf5f48b12979222634693e16d",
+        "name": "_domainkey.hotplug.dev",
+        "type": "TXT",
+        "content": "\"v=DKIM1; p=\"",
+        "proxiable": false,
+        "proxied": false,
+        "ttl": 1,
+        "settings": {},
+        "meta": {},
+        "comment": null,
+        "tags": [],
+        "created_on": "2026-11-04T11:22:39.574194Z",
+        "modified_on": "2026-11-04T11:22:39.574194Z"
+      },
+      {
+        "id": "5005efb94feb07aa69fced4a9402473b",
+        "name": "_github-pages-challenge-muriente.hotplug.dev",
+        "type": "TXT",
+        "content": "33536da2709c4d1d6876949c8cd690",
+        "proxiable": false,
+        "proxied": false,
+        "ttl": 3600,
+        "settings": {},
+        "meta": {},
+        "comment": "GitHub Pages account ownership verification; retain permanently",
+        "tags": [],
+        "created_on": "2026-11-04T15:26:57.133684Z",
+        "modified_on": "2026-11-04T15:26:57.133684Z",
+        "comment_modified_on": "2026-11-04T15:26:57.133684Z"
+      },
+      {
+        "id": "f4d6d4a7b78033681f946004017ad1bc",
+        "name": "hotplug.dev",
+        "type": "TXT",
+        "content": "\"v=spf1 -all\"",
+        "proxiable": false,
+        "proxied": false,
+        "ttl": 1,
+        "settings": {},
+        "meta": {},
+        "comment": null,
+        "tags": [],
+        "created_on": "2026-11-04T11:22:39.515859Z",
+        "modified_on": "2026-11-04T11:22:39.515859Z"
+      }
+    ],
+    "success": true,
+    "errors": [],
+    "messages": [],
+    "result_info": {
+      "page": 1,
+      "per_page": 100,
+      "count": 10,
+      "total_count": 10,
+      "total_pages": 1
+    }
+  },
+  "dnssec": {
+    "result": {
+      "algorithm": "13",
+      "digest": "89F81B77094DFEC06D830343C820322E7E5D329B188CDAE20F4FF0E1DEF638CF",
+      "digest_algorithm": "SHA256",
+      "digest_type": "2",
+      "ds": "hotplug.dev. 3600 IN DS 2371 13 2 89F81B77094DFEC06D830343C820322E7E5D329B188CDAE20F4FF0E1DEF638CF",
+      "flags": 257,
+      "key_tag": 2371,
+      "key_type": "ECDSAP256SHA256",
+      "modified_on": "2026-11-04T14:05:04.560152+00:00",
+      "public_key": "mdsswUyr3DPW132mOi8V9xESWE8jTo0dxCjjnopKl+GqJxpVXckHAeF+KkxLbxILfDLUT0rAK9iUzy1L53eKGQ==",
+      "status": "active"
+    },
+    "success": true,
+    "errors": [],
+    "messages": []
+  },
+  "ssl": {
+    "result": {
+      "id": "ssl",
+      "value": "strict",
+      "modified_on": "2026-11-04T14:07:45.231737Z",
+      "certificate_status": "active",
+      "validation_errors": [],
+      "editable": true
+    },
+    "success": true,
+    "errors": [],
+    "messages": []
+  }
+}
