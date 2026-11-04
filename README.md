@@ -22,16 +22,18 @@ Open http://localhost:4173. Change HTML/CSS directly. `npm run test:links` check
 
 ## Publish
 
-Use a PR targeting `main`. `Site checks` must pass; no second-person approval is required. Squash merge triggers the Website workflow: checks → package only static files → deploy to the `github-pages` environment using GitHub OIDC. No deployment secrets or Cloudflare token are stored in Actions. Actions are pinned to full commit SHAs; weekly Dependabot PRs update Actions and development dependencies.
+Quality checks run on MINI. Commit and push a task branch, open a PR, then run `python3 scripts/check-local.py` on the clean exact PR head. It runs the checks locally and publishes `MINI / site checks` to GitHub. The protected PR requires this status, resolved conversations and zero second-person approvals.
 
-The `github-pages` environment is limited to main. GitHub Pages serves the site with custom domain `hotplug.dev`. `site/version.json` is generated during deployment with the exact source SHA and repository. Cloudflare owns DNS/edge, not hosting. The weekly Live site health workflow checks actual content, canonical redirect and external links; failures use GitHub's normal workflow notifications.
+After squash merge, fast-forward local main, run `python3 scripts/check-local.py` again for the merged SHA, then `python3 scripts/publish.py`. The local publisher copies only site/ plus a source manifest to the gh-pages branch, preserving its history. GitHub's managed Pages service publishes that branch with .nojekyll. GitHub hosts the site; Cloudflare provides DNS/edge.
+
+No configurable hosted build/test/lint/audit jobs, self-hosted runner or new service is required. The former workflows and settings are archived as rollback evidence. GitHub's native Pages publishing run is the hosting service, not our quality-compute route. Weekly Dependabot npm update PRs remain, with validation performed locally. Run live health commands explicitly on MINI; no unattended monitor is claimed. See [local publication](docs/ops/LOCAL-PUBLICATION.md) for the exact change/validation/publish/rollback procedure and trust boundary.
 
 ## Roll back
 
-For website content, revert the faulty merge through a PR, pass checks and merge. Confirm the resulting Pages run and `/version.json`; do not equate source revert with live recovery. An urgent maintainer can dispatch Website on a known-good main revision after reverting; never force-push or delete history.
+For website content, revert the faulty merge through a PR, pass checks and merge. Run the local publisher and confirm the resulting managed Pages run and `/version.json`; do not equate source revert with live recovery. Use a verified known-good content revert; never force-push or delete history.
 
 For DNS, restore the five changed records from `docs/ops/dns-before.json` through Cloudflare's DNS API, preserving unrelated later records. Return each original content/proxy/TTL value by record ID. Do not alter DNSSEC/DS, nameservers, mail-deny TXT, `_domainconnect`, or future domain verification TXT. The prior origin is parking; a DNS rollback restores parking, not an older Hotplug website. Keep Full(strict); never use Flexible as a certificate workaround. See [launch evidence](docs/ops/LAUNCH.md) and [decisions](docs/research/DECISIONS.md).
 
 ## Operations
 
-CODEOWNERS, contribution guidance, issue form, private reporting, secret scanning/push protection, dependency alerts/security updates, branch protections, least-privilege Actions and weekly health checks are configured and recorded with readback in the launch record. No release workflow/binary badge is present because there are no product artifacts here. Security reports: [SECURITY.md](SECURITY.md).
+CODEOWNERS, contribution guidance, issue form, private reporting, secret scanning/push protection, dependency alerts/security updates, branch protections and explicit local checks are configured and recorded with readback in the launch record. No release workflow/binary badge is present because there are no product artifacts here. Security reports: [SECURITY.md](SECURITY.md).

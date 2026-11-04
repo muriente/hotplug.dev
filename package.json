@@ -8,6 +8,8 @@
     "test": "node scripts/validate.mjs",
     "test:browser": "playwright test",
     "test:links": "node scripts/links.mjs",
+    "check:local": "python3 scripts/check-local.py",
+    "publish:site": "python3 scripts/publish.py",
     "preview": "python3 -m http.server 4173 --directory site"
   },
   "devDependencies": {
