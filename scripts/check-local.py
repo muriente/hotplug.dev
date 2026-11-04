@@ -13,9 +13,9 @@ context='MINI / site checks'
 def status(state,description):
  subprocess.run(['gh','api','--method','POST','repos/muriente/hotplug.dev/statuses/'+sha,'-f','state='+state,'-f','context='+context,'-f','description='+description,'-f','target_url=https://github.com/muriente/hotplug.dev/commit/'+sha],check=True,stdout=subprocess.DEVNULL)
 status('pending','MINI local HTML, browser/accessibility and dependency checks running')
-env=os.environ.copy();env.pop('SITE_URL',None)
+env=os.environ.copy();env.pop('SITE_URL',None);env['CI']='1'
 try:
- for cmd in [['npm','ci','--ignore-scripts'],['npm','test'],['npm','run','test:browser'],['npm','audit','--audit-level=high']]:subprocess.run(cmd,check=True,env=env)
+ for cmd in [['npm','ci','--ignore-scripts'],['npm','test'],['python3','-m','unittest','discover','-s','tests','-p','test_*.py'],['npm','run','test:browser'],['npm','audit','--audit-level=high']]:subprocess.run(cmd,check=True,env=env)
  if run('git','rev-parse','HEAD')!=sha or run('git','status','--porcelain'):raise RuntimeError('Source changed during validation')
  status('success','MINI: HTML, 12 browser/axe checks and dependency audit passed')
 except BaseException:

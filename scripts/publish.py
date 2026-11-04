@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Publish locally validated main to GitHub Pages, using a fast-forward branch."""
-import json,os,shutil,subprocess,tempfile
+import json,os,subprocess,tempfile
+from publication import copy_commit_site
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];os.chdir(ROOT)
 REPO='https://github.com/muriente/hotplug.dev.git'
@@ -19,8 +20,7 @@ with tempfile.TemporaryDirectory(prefix='hotplug-publish-') as temp:
   run('git','fetch','origin','gh-pages',cwd=target);run('git','checkout','-B','gh-pages','FETCH_HEAD',cwd=target)
   # Remove only tracked files in this disposable checkout, then copy current site.
   run('git','rm','-r','--ignore-unmatch','.',cwd=target)
- if any(p.is_symlink() for p in (ROOT/'site').rglob('*')):raise SystemExit('Symlinks are not allowed in public output.')
- shutil.copytree(ROOT/'site',target,dirs_exist_ok=True)
+ copy_commit_site(ROOT,sha,target)
  (target/'version.json').write_text(json.dumps({'sha':sha,'repository':'muriente/hotplug.dev','publication':'local MINI to native GitHub Pages'})+'\n')
  run('git','add','.',cwd=target)
  staged=subprocess.run(['git','diff','--cached','--quiet'],cwd=target).returncode
