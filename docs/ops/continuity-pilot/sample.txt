@@ -1,0 +1,3 @@
+Synthetic Hotplug continuity checkpoint. No product or branding change.
+Decision: preserve useful work independently of optional transcript capture.
+Next step: recover this exact artifact in a fresh checkout and verify its hash.
