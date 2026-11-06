@@ -1,0 +1,38 @@
+{
+  "checkpoint_commit": "122cb14f5b89bfaa2087aa981e4d3ddbe2ef9ebe",
+  "remote_recovery": {
+    "clone_seconds": 0.9035,
+    "recovery_process_seconds": 0.0485,
+    "recovered": {
+      "outcome": "Evaluate portable continuity without blocking normal work or delegations.",
+      "owner": "Codex pilot session",
+      "state": "partial; Git recovery in progress; real Claude-to-Codex handoff blocked",
+      "checkpoint_sha256": "72422489637bfde7e42b9b8896daacef4daba0060a9c4371c29837e62485efc4",
+      "next_action": "Recover the checkpoint from GitHub in a fresh clone, then report the measured limits. Complete actual cross-agent acceptance only on an authenticated Claude surface with approved Codex hooks.",
+      "handoff": {
+        "from": "Codex pilot session",
+        "to": "authenticated Claude Code then Codex receiving session",
+        "state": "pending; not acknowledged",
+        "blockers": [
+          "Claude Code CLI is not logged in.",
+          "Seven Codex project hooks require approval; trust not bypassed.",
+          "No accessible hosted Claude execution surface in this task."
+        ]
+      },
+      "verification_seconds": 0.0128,
+      "scope": "Git artifact verification only; no agent-session recovery claimed"
+    }
+  },
+  "synthetic_interruption": {
+    "synthetic_interruption_exit": 23,
+    "fresh_process_recovery_seconds": 0.0395,
+    "altered_artifact_rejected": true,
+    "missing_artifact_rejected": true,
+    "pending_handoff_preserved": true
+  },
+  "limitations": [
+    "Single-machine single-run measurements; no human resumption timing or baseline.",
+    "No real Claude-to-Codex handoff or Entire captured-session recovery.",
+    "Committed artifact and mission recovered; uncommitted edits and private conversation were not tested."
+  ]
+}

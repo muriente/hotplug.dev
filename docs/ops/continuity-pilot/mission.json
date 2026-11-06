@@ -4,7 +4,7 @@
   "branch": "pilot/continuity-20261106",
   "outcome": "Evaluate portable continuity without blocking normal work or delegations.",
   "owner": "Codex pilot session",
-  "state": "partial; Git recovery in progress; real Claude-to-Codex handoff blocked",
+  "state": "partial; Git remote recovery verified; real Claude-to-Codex handoff blocked",
   "checkpoint": {
     "artifact": "docs/ops/continuity-pilot/sample.txt",
     "sha256": "72422489637bfde7e42b9b8896daacef4daba0060a9c4371c29837e62485efc4"
@@ -14,7 +14,7 @@
     "Keep optional transcript capture local, with automatic uploads and telemetry disabled.",
     "Do not resume website launch, deploy, merge, alter global rules, or gate delegation."
   ],
-  "next_action": "Recover the checkpoint from GitHub in a fresh clone, then report the measured limits. Complete actual cross-agent acceptance only on an authenticated Claude surface with approved Codex hooks.",
+  "next_action": "Use the draft PR and RESULTS.md to review this bounded pilot. Complete actual cross-agent acceptance only on an authenticated Claude surface with approved Codex hooks; do not roll out Entire globally.",
   "handoff": {
     "from": "Codex pilot session",
     "to": "authenticated Claude Code then Codex receiving session",
