@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Run quality checks on MINI and attest the exact clean commit to GitHub."""
-import json,os,subprocess,socket
+import os, subprocess
+from publication import PUBLIC_REPOSITORY
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 os.chdir(ROOT)
@@ -11,7 +12,7 @@ host=run('scutil','--get','ComputerName')
 if host.upper()!='MINI':raise SystemExit('Run this project quality gate on MINI; observed '+host)
 context='MINI / site checks'
 def status(state,description):
- subprocess.run(['gh','api','--method','POST','repos/tunless/hotplug.dev/statuses/'+sha,'-f','state='+state,'-f','context='+context,'-f','description='+description,'-f','target_url=https://github.com/tunless/hotplug.dev/commit/'+sha],check=True,stdout=subprocess.DEVNULL)
+ subprocess.run(['gh','api','--method','POST',f'repos/{PUBLIC_REPOSITORY}/statuses/{sha}','-f','state='+state,'-f','context='+context,'-f','description='+description,'-f',f'target_url=https://github.com/{PUBLIC_REPOSITORY}/commit/{sha}'],check=True,stdout=subprocess.DEVNULL)
 status('pending','MINI local HTML, browser/accessibility and dependency checks running')
 env=os.environ.copy();env.pop('SITE_URL',None);env['CI']='1'
 try:

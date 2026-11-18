@@ -1,6 +1,6 @@
 # Hotplug website
 
-Public website for **Hotplug**, an in-development project for sharing Android phone internet over USB with supported computers or routers.
+Juan Muriente maintains this website for **Hotplug**, a project for sharing an Android phone’s internet connection over USB. Hotplug is in development.
 
 **Live:** https://hotplug.dev · **Hosting:** GitHub Pages · **Community:** [Discussions](https://github.com/muriente/hotplug.dev/discussions)
 
@@ -22,11 +22,9 @@ Open http://localhost:4173. Change HTML/CSS directly. `npm run test:links` check
 
 ## Publish
 
-Quality checks run on MINI. Commit and push a task branch, open a PR, then run `python3 scripts/check-local.py` on the clean exact PR head. It runs the checks locally and publishes `MINI / site checks` to GitHub. The protected PR requires this status, resolved conversations and zero second-person approvals.
+Website changes enter through pull requests. Juan runs the required `MINI / site checks` on his Mac mini before merging a pull request and again on the merged commit.
 
-After squash merge, fast-forward local main, run `python3 scripts/check-local.py` again for the merged SHA, then `python3 scripts/publish.py`. The local publisher copies only site/ plus a source manifest to the gh-pages branch, preserving its history. GitHub's managed Pages service publishes that branch with .nojekyll. GitHub hosts the site; Cloudflare provides DNS/edge.
-
-No configurable hosted build/test/lint/audit jobs, self-hosted runner or new service is required. The former workflows and settings are archived as rollback evidence. GitHub's native Pages publishing run is the hosting service, not our quality-compute route. Weekly Dependabot npm update PRs remain, with validation performed locally. Run live health commands explicitly on MINI; no unattended monitor is claimed. See [local publication](docs/ops/LOCAL-PUBLICATION.md) for the exact change/validation/publish/rollback procedure and trust boundary.
+To publish a checked release, the maintainer runs `python3 scripts/publish.py`. It copies the committed `site/` files and a source manifest into the `gh-pages` branch. GitHub Pages serves that branch at [hotplug.dev](https://hotplug.dev). See the [publication procedure](docs/ops/LOCAL-PUBLICATION.md).
 
 ## Roll back
 
