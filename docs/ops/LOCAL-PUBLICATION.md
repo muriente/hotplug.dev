@@ -1,8 +1,8 @@
 # Local quality checks, GitHub Pages publication
 
-Effective 2026-11-04 after Juan's new AGENTS.md preflight item7 (KDEV-162). Quality compute belongs on MINI. GitHub remains review, reconciliation and the explicitly requested website host. No self-hosted Actions runner, new service, paid resource or standing cloud test job is required.
+Juan maintains the public website at `muriente/hotplug.dev`. He runs its checks on his Mac mini (MINI). GitHub hosts the reviewed website source, accepts public contributions and serves the published files through Pages.
 
-The earlier Website/Live site health Actions configurations are preserved under `pre-local-compute/` as rollback evidence, not executable workflow files. Those two repository workflows were disabled. Earlier hosted runs are retained as historical evidence and must not be described as user-requested compute. The explicit human request was GitHub hosting and operations; the initial hosted quality job was an implementation choice superseded by the new constraint.
+The earlier checks and health workflows are archived under `pre-local-compute/`. Current publishing uses the steps below.
 
 ## Normal change path
 

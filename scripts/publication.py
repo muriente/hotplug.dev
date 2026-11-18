@@ -2,6 +2,8 @@
 import subprocess
 from pathlib import PurePosixPath
 
+PUBLIC_REPOSITORY = "muriente/hotplug.dev"
+
 def copy_commit_site(repo,sha,target):
     tree=subprocess.check_output(['git','ls-tree','-rz',sha,'site'],cwd=repo)
     count=0

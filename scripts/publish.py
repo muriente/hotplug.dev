@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """Publish locally validated main to GitHub Pages, using a fast-forward branch."""
 import json,os,subprocess,tempfile
-from publication import copy_commit_site
+from publication import PUBLIC_REPOSITORY, copy_commit_site
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];os.chdir(ROOT)
-REPO='https://github.com/tunless/hotplug.dev.git'
+REPO=f'https://github.com/{PUBLIC_REPOSITORY}.git'
 def run(*a,cwd=ROOT):return subprocess.check_output(a,cwd=cwd,text=True).strip()
 if run('git','branch','--show-current')!='main' or run('git','status','--porcelain'):raise SystemExit('Publish from a clean main checkout.')
 sha=run('git','rev-parse','HEAD')
 if run('git','ls-remote',REPO,'refs/heads/main').split()[0]!=sha:raise SystemExit('Local main differs from remote main.')
-checks=json.loads(run('gh','api','repos/tunless/hotplug.dev/statuses/'+sha))
+checks=json.loads(run('gh','api',f'repos/{PUBLIC_REPOSITORY}/statuses/{sha}'))
 check=next((s for s in checks if s['context']=='MINI / site checks'),None)
 if not check or check['state']!='success' or check['creator']['login']!='muriente':raise SystemExit('Run python3 scripts/check-local.py for this exact main SHA first.')
 # Temp checkout is isolated. History and prior deployment commits remain intact.
@@ -21,7 +21,7 @@ with tempfile.TemporaryDirectory(prefix='hotplug-publish-') as temp:
   # Remove only tracked files in this disposable checkout, then copy current site.
   run('git','rm','-r','--ignore-unmatch','.',cwd=target)
  copy_commit_site(ROOT,sha,target)
- (target/'version.json').write_text(json.dumps({'sha':sha,'repository':'tunless/hotplug.dev','publication':'local MINI to native GitHub Pages'})+'\n')
+ (target/'version.json').write_text(json.dumps({'sha':sha,'repository':PUBLIC_REPOSITORY,'publication':'local MINI to native GitHub Pages'})+'\n')
  run('git','add','.',cwd=target)
  staged=subprocess.run(['git','diff','--cached','--quiet'],cwd=target).returncode
  if staged:
